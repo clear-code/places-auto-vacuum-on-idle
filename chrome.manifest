@@ -1,0 +1,4 @@
+
+component	{4bdc28aa-1031-4f51-881b-1c44fa4d43fd}	components/startup.js
+contract	@clear-code.com/places-auto-vacuum-on-idle/startup;1	{4bdc28aa-1031-4f51-881b-1c44fa4d43fd}
+category	profile-after-change	places-auto-vacuum-on-idle@clear-code.com_StartupService	@clear-code.com/places-auto-vacuum-on-idle/startup;1
