@@ -36,6 +36,18 @@ StartupService.prototype = {
 
 	onStartup : function()
 	{
+		try {
+			var { PlacesDBUtils } = Cu.import('resource://gre/modules/PlacesDBUtils.jsm', {});
+			if (!(typeof PlacesDBUtils.maintenanceOnIdle == 'function'))
+				return Cu.reportError(new Error(ADDON_ID + ': PlacesDBUtils.maintenanceOnIdle() is not available.'));
+			if (!(typeof PlacesDBUtils.maintenanceOnIdle == 'function'))
+				return Cu.reportError(new Error(ADDON_ID + ': PlacesDBUtils.checkAndFixDatabase() is not available.'));
+
+			PlacesDBUtils.maintenanceOnIdle = PlacesDBUtils.checkAndFixDatabase;
+		}
+		catch(error) {
+			Cu.reportError(error);
+		}
 	}
 };
 var NSGetFactory = XPCOMUtils.generateNSGetFactory([StartupService]);
