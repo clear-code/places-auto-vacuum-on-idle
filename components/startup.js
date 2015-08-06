@@ -50,7 +50,8 @@ StartupService.prototype = {
 				return this.checkAndFixDatabase(function(aMessages) {
 					console.log('PlacesDBUtils.checkAndFixDatabase() successfully finished.');
 					console.log(aMessages);
-					aCallback.call(this, aMessages);
+					if (typeof aCallback == 'function')
+						aCallback.call(this, aMessages);
 				}, aScope);
 			};
 
