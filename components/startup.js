@@ -46,8 +46,9 @@ StartupService.prototype = {
 			var { console } = Cu.import('resource://gre/modules/devtools/Console.jsm', {});
 
 			PlacesDBUtils.maintenanceOnIdle = function(aCallback, aScope) {
+				console.log('PlacesDBUtils.maintenanceOnIdle() is called and redirected to checkAndFixDatabase().');
 				return this.checkAndFixDatabase(function(aMessages) {
-					console.log('PlacesDBUtils.maintenanceOnIdle() is called but checkAndFixDatabase() is processed.');
+					console.log('PlacesDBUtils.checkAndFixDatabase() successfully finished.');
 					console.log(aMessages);
 					aCallback.call(this, aMessages);
 				}, aScope);
