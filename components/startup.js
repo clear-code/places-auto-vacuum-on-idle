@@ -43,7 +43,7 @@ StartupService.prototype = {
 			if (!(typeof PlacesDBUtils.maintenanceOnIdle == 'function'))
 				return Cu.reportError(new Error(ADDON_ID + ': PlacesDBUtils.checkAndFixDatabase() is not available.'));
 
-			var { console } = Cu.import('resource://gre/modules/devtools/Console.jsm', {});
+			var { console } = Cu.import('resource://gre/modules/Console.jsm', {});
 
 			PlacesDBUtils.maintenanceOnIdle = function(aCallback, aScope) {
 				console.log('PlacesDBUtils.maintenanceOnIdle() is called and redirected to checkAndFixDatabase().');
