@@ -16,5 +16,5 @@ Then you'll see following messages in the browser console:
 
  * `PlacesDBUtils.maintenanceOnIdle() is called and redirected to checkAndFixDatabase().`
  * `PlacesDBUtils.checkAndFixDatabase() successfully finished.`
- * `The database has been vacuumed.`
+ * `The database has been vacuumed.` (MCD version), or `Array [ ... ]` including `> vacuum` (addon version.)
 
