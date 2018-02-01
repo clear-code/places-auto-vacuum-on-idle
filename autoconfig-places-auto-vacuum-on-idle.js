@@ -1,4 +1,4 @@
-{// Permissions Auto Registerer, for Firefox 52/Thunderbird 52 and later
+{// Permissions Auto Registerer, for Firefox 60 and later
   const { classes: Cc, interfaces: Ci, utils: Cu } = Components;
   const { Services } = Cu.import('resource://gre/modules/Services.jsm', {});
 
