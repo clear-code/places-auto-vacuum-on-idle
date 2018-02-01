@@ -20,7 +20,11 @@
             try {
               const result = await this.checkAndFixDatabase();
               log('PlacesDBUtils.checkAndFixDatabase() successfully finished.');
-              log(JSON.stringify([...result]));
+              const stringifiedResult = JSON.stringify([...result]);
+              if (stringifiedResult.indexOf('The database has been vacuumed') < 0)
+                log(`Failed to vacuum the database. ${stringifiedResult}`);
+              else
+                log('The database has been vacuumed.');
               return result;
             }
             catch(e) {
