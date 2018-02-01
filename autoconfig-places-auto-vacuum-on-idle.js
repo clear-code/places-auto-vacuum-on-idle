@@ -20,10 +20,12 @@
             try {
               const result = await this.checkAndFixDatabase();
               log('PlacesDBUtils.checkAndFixDatabase() successfully finished.');
-              log(result);
+              log(JSON.stringify([...result]));
+              return result;
             }
             catch(e) {
               Cu.reportError(e);
+              throw e;
             }
          };
          log('PlacesDBUtils.maintenanceOnIdle() is successfully replaced with PlacesDBUtils.checkAndFixDatabase().');
