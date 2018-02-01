@@ -15,14 +15,16 @@
          if (!(typeof PlacesDBUtils.checkAndFixDatabase == 'function'))
             return Cu.reportError(new Error('places-auto-vacuum-on-idle: PlacesDBUtils.checkAndFixDatabase() is not available.'));
 
-         PlacesDBUtils.maintenanceOnIdle = async function(aCallback, aScope) {
+         PlacesDBUtils.maintenanceOnIdle = async function() {
             log('PlacesDBUtils.maintenanceOnIdle() is called and redirected to checkAndFixDatabase().');
-            return this.checkAndFixDatabase(aMessages => {
-               log('PlacesDBUtils.checkAndFixDatabase() successfully finished.');
-               log(aMessages);
-               if (typeof aCallback == 'function')
-                  aCallback.call(this, aMessages);
-            }, aScope);
+            try {
+              const result = await this.checkAndFixDatabase();
+              log('PlacesDBUtils.checkAndFixDatabase() successfully finished.');
+              log(result);
+            }
+            catch(e) {
+              Cu.reportError(e);
+            }
          };
          log('PlacesDBUtils.maintenanceOnIdle() is successfully replaced with PlacesDBUtils.checkAndFixDatabase().');
       }
